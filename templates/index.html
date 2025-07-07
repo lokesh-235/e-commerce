@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 1.5rem;
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        nav{
+            width: 100%;
+            border: 2px solid black;
+            position: sticky;
+            top: 0;
+            background-color: black;
+        }
+        nav>ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            flex-wrap: wrap;
+        }
+        .products{
+            display: grid;
+            grid-template-columns: repeat(3,auto);
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin: 20px;
+            
+        }
+        nav>ul>li>input{
+            
+            width: 400px;
+            height: 40px;
+            font-size: 20px;
+        }
+        .products>.product{
+            width: 200px;
+            height: 400px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <ul>
+            <li>search <input type="text" name="" id="" placeholder="search your product"></li>
+            <li><a href="/login">login</a></li>
+            <li><a href="#">signup</a></li>
+            <li><a href="#">contact us</a></li>
+            <li><a href="#">about us</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="products">
+       <div id="product1" class="product">product1</div>
+       <div id="product2" class="product">product2</div>
+       <div id="product3" class="product">product3</div>
+       <div id="product4" class="product">product4</div>
+       <div id="product5" class="product">product5</div>
+       <div id="product6" class="product">product6</div>
+       <div id="product7" class="product">product7</div>
+       <div id="product8" class="product">product8</div>
+       <div id="product9" class="product">product9</div>
+       <div id="product10" class="product">product10</div>
+     
+    </div>
+</body>
+</html>
