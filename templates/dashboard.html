@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ username }}!</h2>
+
+    <h3>Recommended Products</h3>
+    <ul>
+        {% for p in products %}
+            <li><strong>{{ p[1] }}</strong> – ₹{{ p[2] }} | Stock: {{ p[3] }}<br>{{ p[4] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Your Orders</h3>
+    <ul>
+        {% for o in orders %}
+            <li>{{ o[1] }} - Quantity: {{ o[2] }} - Date: {{ o[3] }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

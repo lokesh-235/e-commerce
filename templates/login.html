@@ -4,26 +4,128 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <style>
-        .error { color: red; }
-        .success { color: green; }
+        body {
+            background: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            outline: none;
+            font-size: 16px;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
+
+        input:focus {
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            transform: scale(1.01);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            box-shadow: inset 2px 2px 5px #bebebe, inset -2px -2px 5px #ffffff;
+            transform: scale(1.02);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .extra-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .extra-link a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        .extra-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h2>Login Page</h2>
-    <form id="loginForm" method="POST" action="/login" onsubmit="return validateForm()">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br><br>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm" method="POST" action="/login" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
 
-        <button type="submit">Login</button>
-        <br><br>
-        <div id="clientError" class="error"></div>
-        {% if message %}
-            <div class="{{ status }}">{{ message }}</div>
-        {% endif %}
-    </form>
+            <button type="submit">Login</button>
+
+            <div id="clientError" class="error"></div>
+            {% if message %}
+                <div class="{{ status }}">{{ message }}</div>
+            {% endif %}
+        </form>
+
+        <div class="extra-link">
+            Don't have an account? <a href="/signup">Sign up here</a>
+        </div>
+    </div>
 
     <script>
         function validateForm() {
@@ -36,7 +138,7 @@
                 return false;
             }
 
-            errorDiv.textContent = '';  // Clear error if valid
+            errorDiv.textContent = '';
             return true;
         }
     </script>
