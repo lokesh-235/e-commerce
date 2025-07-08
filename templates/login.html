@@ -2,16 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Login</title>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+    </style>
 </head>
 <body>
-    <form action="/" method="post">
-        <input type="text" id="username" placeholder="Enter username">
-        <input type="password" name="" id="password" placeholder="Enter password ">
-        <input type="submit" name="" id="">
+    <h2>Login Page</h2>
+    <form id="loginForm" method="POST" action="/login" onsubmit="return validateForm()">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
 
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="submit">Login</button>
+        <br><br>
+        <div id="clientError" class="error"></div>
+        {% if message %}
+            <div class="{{ status }}">{{ message }}</div>
+        {% endif %}
     </form>
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('clientError');
+
+            if (username === '' || password === '') {
+                errorDiv.textContent = 'Both fields are required!';
+                return false;
+            }
+
+            errorDiv.textContent = '';  // Clear error if valid
+            return true;
+        }
+    </script>
 </body>
 </html>
