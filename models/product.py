@@ -9,7 +9,8 @@ def create_product_table():
             name TEXT NOT NULL,
             price REAL NOT NULL,
             stock INTEGER DEFAULT 0,
-            description TEXT
+            description TEXT,
+            ImageURL TEXT
         )
     ''')
     conn.commit()

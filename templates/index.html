@@ -3,50 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Neumorphic Store</title>
     <style>
-        body{
-            font-size: 1.5rem;
-            width: 100vw;
-            height: 100vh;
-
+        body {
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0e0e0;
+            margin: 0;
+            padding: 0;
         }
 
-        nav{
+        nav {
             width: 100%;
-            border: 2px solid black;
+            background-color: #2f2f2f;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 10px 0;
             position: sticky;
             top: 0;
-            background-color: black;
+            z-index: 1000;
         }
-        nav>ul{
+
+        nav > ul {
             list-style: none;
             display: flex;
             justify-content: space-around;
             align-items: center;
             color: white;
-            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
         }
-        .products{
+
+        nav > ul > li {
+            margin: 0 10px;
+        }
+
+        nav > ul > li > input {
+            width: 300px;
+            height: 35px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            padding: 0 10px;
+        }
+
+        .products {
             display: grid;
-            grid-template-columns: repeat(3,auto);
-            justify-content: space-around;
-            align-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .product {
+            background: #e0e0e0;
+            border-radius: 20px;
+            box-shadow: 9px 9px 16px #bebebe,
+                        -9px -9px 16px #ffffff;
             text-align: center;
-            margin: 20px;
-            
+            padding: 20px;
+            transition: all 0.3s ease;
         }
-        nav>ul>li>input{
-            
-            width: 400px;
-            height: 40px;
-            font-size: 20px;
+
+        .product:hover {
+            box-shadow: inset 5px 5px 10px #bebebe,
+                        inset -5px -5px 10px #ffffff;
         }
-        .products>.product{
-            width: 200px;
-            height: 400px;
-            border: 2px solid black;
-            margin-bottom: 20px;
+
+        .product h3 {
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .add-to-cart {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+            background: #e0e0e0;
+            box-shadow: 5px 5px 10px #bebebe,
+                        -5px -5px 10px #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            box-shadow: inset 3px 3px 6px #bebebe,
+                        inset -3px -3px 6px #ffffff;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -55,27 +105,23 @@
 
     <nav class="nav">
         <ul>
-            <li>search <input type="text" name="" id="" placeholder="search your product"></li>
-            <li><a href="/login">login</a></li>
-            <li><a href="/signup">signup</a></li>
-            <li><a href="#">contact us</a></li>
-            <li><a href="#">about us</a></li>
-
+            <li>Search <input type="text" placeholder="Search your product"></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
         </ul>
     </nav>
 
     <div class="products">
-       <div id="product1" class="product">product1</div>
-       <div id="product2" class="product">product2</div>
-       <div id="product3" class="product">product3</div>
-       <div id="product4" class="product">product4</div>
-       <div id="product5" class="product">product5</div>
-       <div id="product6" class="product">product6</div>
-       <div id="product7" class="product">product7</div>
-       <div id="product8" class="product">product8</div>
-       <div id="product9" class="product">product9</div>
-       <div id="product10" class="product">product10</div>
-     
+        {% for product in products %}
+        <div class="product">
+            <h3>{{ product[1] }}</h3>
+            <p>{{ product[4] }}</p>
+            <p><strong>₹{{ product[2] }}</strong></p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        {% endfor %}
     </div>
     
 </body>

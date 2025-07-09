@@ -10,9 +10,14 @@ app.config['SECRET_KEY'] = 'w2w12121'
 def init_db():
     create_all_tables()
 
+from models.product import get_all_products
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    products = get_all_products()
+    print(products)
+    return render_template('index.html', products=products)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -24,7 +29,7 @@ def login():
         password = request.form['password']
 
         user = get_user_by_credentials(username, password)
-
+        print(user)
         if user:
             session['user_id'] = user[0]         # user[0] = id
             session['username'] = user[1]        # user[1] = username
@@ -80,7 +85,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

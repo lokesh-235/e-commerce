@@ -2,13 +2,113 @@
 <html>
 <head>
     <title>Signup</title>
-    <style>
-        .error { color: red; }
-        .success { color: green; }
+     <style>
+        body {
+            background: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+            background: #e0e0e0;
+            box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"]
+         {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+            outline: none;
+            font-size: 16px;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
+
+        input:focus {
+            box-shadow: inset 3px 3px 6px #bebebe, inset -3px -3px 6px #ffffff;
+            transform: scale(1.01);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            box-shadow: inset 2px 2px 5px #bebebe, inset -2px -2px 5px #ffffff;
+            transform: scale(1.02);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .extra-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .extra-link a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        .extra-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h2>Signup Page</h2>
+
+    <div class="form-container">
+            <h2>Signup Page</h2>
     <form id="signupForm" method="POST" action="/signup" onsubmit="return validateForm()">
         <label>Username:</label><br>
         <input type="text" name="username" id="username"><br><br>
@@ -26,7 +126,7 @@
             <div class="{{ status }}">{{ message }}</div>
         {% endif %}
     </form>
-
+    </div>
     <script>
         function validateForm() {
             const username = document.getElementById("username").value.trim();
